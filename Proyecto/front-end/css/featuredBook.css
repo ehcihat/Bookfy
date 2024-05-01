@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+:root{
+   --blue:#4658f8;
+   --red:#c0392b;
+   --orange:#f39c12;
+   --green:#22BB33;
+   --black:#333;
+   --white:#fff;
+   --light-color:#666;
+   --light-white:#ccc;
+   --light-bg:#f5f5f5;
+   --beige: #f5f5dc;
+   --border:.1rem solid var(--black);
+   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+*{
+   font-family: 'Times New Roman', serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition:all .2s linear;
+}
+
+*::selection{
+   background-color: var(--blue);
+   color:var(--white);
+}
+
+*::-webkit-scrollbar{
+   height: .5rem;
+   width: 1rem;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color: var(--blue);
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+section{
+    padding: 3rem 2rem;
+}
+
+
+
+
+
+/* Estilos para la sección featured-books */
+.featured-books {
+    padding: 50px 0; /* Ajusta el espaciado según sea necesario */
+    text-align: center;
+    color: var(--blue);
+ }
+ 
+ .featured-books h2 {
+    font-size: 2.5rem; /* Ajusta el tamaño del título según sea necesario */
+    color: var(--black);
+    margin-bottom: 20px; /* Ajusta el espaciado entre el título y el contenido */
+ }
+ 
+ 
+ .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0; 
+    text-align: center;
+ }
+ 
+ .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; 
+    margin-bottom: 30px; 
+ }
+ 
+ .footer-section {
+    flex: 1;
+ }
+ 
+ .footer-section h3 {
+    font-size: 2rem; 
+    color: var(--orange);
+    margin-bottom: 10px; 
+ }
+ 
+ .footer-section p {
+    font-size: 1.6rem; /* Ajusta el tamaño del párrafo según sea necesario */
+    margin-bottom: 10px; /* Ajusta el espaciado entre los párrafos */
+ }
+ 
+ .footer-bottom {
+    font-size: 1.4rem; /* Ajusta el tamaño del texto según sea necesario */
+ }
+ 
+ /* Estilos para las tarjetas de libros */
+ .card {
+    margin-bottom: 20px; /* Espacio entre cada tarjeta */
+    border: 1px solid #ddd; /* Borde de la tarjeta */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: var(--box-shadow);
+    transition: box-shadow 0.3s ease; /* Transición suave en la sombra */
+    width: 30%; /* Establece el ancho de cada carta */
+    display: flex; /* Establece la carta como un flexbox */
+    flex-direction: column; /* Alinea los elementos verticalmente dentro de la carta */
+  }
+ 
+ .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+  }
+ 
+ /* Contenedor de libros destacados */
+ .featured-books-container {
+    display: flex; /* Establece el contenedor como un flexbox */
+    justify-content: space-between; /* Distribuye los elementos de manera uniforme a lo largo del contenedor */
+    gap: 20px; /* Espacio entre cada carta */
+  }
+ 
+ /* Estilos para el contenido dentro de las tarjetas */
+ .book {
+    display: flex; /* Establece el libro como un flexbox */
+    flex-direction: column; /* Alinea los elementos verticalmente dentro del libro */
+    align-items: center; /* Centra horizontalmente los elementos dentro del libro */
+    text-align: center; /* Alinea el texto al centro */
+  }
+ 
+ .book h3 {
+    font-size: 18px; /* Tamaño del título */
+    margin-bottom: 10px; /* Espacio inferior entre el título y la imagen */
+    color: var(--black);
+  }
+ 
+  .book img {
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height: 300px; /* Altura fija para las imágenes */
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor manteniendo la relación de aspecto y sin recortarla */
+    border-top-left-radius: 5px; /* Borde redondeado superior izquierdo */
+    border-top-right-radius: 5px; /* Borde redondeado superior derecho */
+  }
+ 
+ 
+ 
+ @media (max-width:991px){
+ 
+    html{
+       font-size: 55%;
+    }
+ 
+ }
+ 
+ @media (max-width:768px){
+ 
+    #menu-btn{
+       display: inline-block;
+    }
+ 
+    .header .header-2 .flex .navbar{
+       position: absolute;
+       top:99%; left:0; right:0;
+       background-color: var(--white);
+       border-top: var(--border);
+       border-bottom: var(--border);
+       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+ 
+    .header .header-2 .flex .navbar.active{
+       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+ 
+    .header .header-2 .flex .navbar a{
+       display: block;
+       font-size: 2.5rem;
+       margin:2rem;
+    }
+ 
+    .home .content h3{
+       font-size: 3.5rem;
+    }
+ 
+    .card {
+       width: 45%; /* Establece un ancho más pequeño para las tarjetas en dispositivos más pequeños */
+    }
+ 
+ }
+ 
+ @media (max-width:450px){
+ 
+    html{
+       font-size: 50%;
+    }
+ 
+    .heading h3{
+       font-size: 3.5rem;
+    }
+ 
+    .title{
+       font-size: 3rem;
+    }
+ 
+    .book img {
+       height: 150px; /* Reducir la altura de las imágenes en dispositivos muy pequeños */
+    }
+ 
+ }

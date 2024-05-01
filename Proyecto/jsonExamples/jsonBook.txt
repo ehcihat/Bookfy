@@ -1,0 +1,34 @@
+
+POST Example
+{    
+   "tit_lib": "El camino de los reyes",
+        "num_pag": "1069",
+        "date_pub": "2010-08-31",
+        "precio": "26.99",
+        "lan_lib": "Español",
+        "img_lib": "archivo1.jpg",
+        "id_edi": 1,
+        "des_lib": "ejemplo",
+        "id_gen": 2,
+        "cod_tie": 1,
+        "isbn": "9780765365219",
+        "id_aut": [1],
+        "id_cat": [2]
+}
+PUT Example
+{    
+    "id_lib": 7,
+        "tit_lib": "El camino de los reyes",
+        "num_pag": "1069",
+        "date_pub": "2010-08-31",
+        "precio": "26.99",
+        "lan_lib": "Español",
+        "img_lib": "archivo1.jpg",
+        "id_edi": 1,
+        "des_lib": "ejemplo",
+        "id_gen": 2,
+        "cod_tie": 1,
+        "isbn": "9780765365219",
+        "id_aut": [1],
+        "id_cat": [2]
+}
