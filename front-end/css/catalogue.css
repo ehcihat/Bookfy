@@ -1,0 +1,539 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+:root{
+   --blue:#4658f8;
+   --red:#c0392b;
+   --orange:#f39c12;
+   --green:#22BB33;
+   --black:#333;
+   --white:#fff;
+   --light-color:#666;
+   --light-white:#ccc;
+   --light-bg:#f5f5f5;
+   --beige: #f5f5dc;
+   --border:.1rem solid var(--black);
+   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+.header .flex .account-box{
+   position: absolute;
+   top:120%; right:2rem;
+   width: 30rem;
+   box-shadow: var(--box-shadow);
+   border-radius: .5rem;
+   padding:2rem;
+   text-align: center;
+   border-radius: .5rem;
+   border:var(--border);
+   background-color: var(--white);
+   display: none;
+   animation:fadeIn .2s linear;
+}
+
+.header .flex .account-box.active{
+   display: inline-block;
+}
+
+.header .flex .account-box p{
+   font-size: 2rem;
+   color:var(--light-color);
+   margin-bottom: 1.5rem;
+}
+
+.header .flex .account-box p span{
+   color:var(--blue);
+}
+
+.header .flex .account-box .delete-btn{
+   margin-top: 0;
+}
+
+.header .flex .account-box div{
+   margin-top: 1.5rem;
+   font-size: 2rem;
+   color:var(--light-color);
+}
+
+.header .flex .account-box div a{
+   color:var(--orange);
+}
+
+.header .flex .account-box div a:hover{
+   text-decoration: underline;
+}
+
+*{
+   font-family: 'Times New Roman', serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition:all .2s linear;
+}
+
+*::selection{
+   background-color: var(--blue);
+   color:var(--white);
+}
+
+*::-webkit-scrollbar{
+   height: .5rem;
+   width: 1rem;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color: var(--blue);
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+section{
+    padding: 3rem 2rem;
+}
+
+.message{
+   position: sticky;
+   top:0;
+   margin:0 auto;
+   max-width: 1200px;
+   background-color: var(--white);
+   padding:2rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   z-index: 10000;
+   gap:1.5rem;
+}
+.message-error{
+   font-size: 2rem;
+   position: sticky;
+   top:0;
+   margin:0 auto;
+   max-width: 1200px;
+   color: var(--white);
+   background-color: var(--red);
+   padding:2rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   z-index: 10000;
+   gap:1.5rem;
+}
+.message-success{
+   font-size: 2rem;
+   position: sticky;
+   top:0;
+   margin:0 auto;
+   max-width: 1200px;
+   color: var(--white);
+   background-color: var(--green);
+   padding:2rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   z-index: 10000;
+   gap:1.5rem;
+}
+
+.message span{
+   font-size: 2rem;
+   color:var(--black);
+}
+
+.message i{
+   cursor: pointer;
+   color:var(--red);
+   font-size: 2.5rem;
+}
+
+.message i:hover{
+   transform: rotate(90deg);
+}
+.header{
+    position: sticky;
+    top:0; left:0; right:0;
+    z-index: 1000;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+}
+.header .flex{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+.bookfy-logo {
+   width: 150px; 
+}
+
+.header .flex .logo{
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+.header .flex .logo .span{
+    color:var(--blue);
+}
+
+.header .flex .navbar a {
+   margin: 0 3rem;
+   font-size: 2.5rem;
+   color: var(--black);
+}
+
+.header .flex .navbar a:hover {
+   color: var(--blue);
+}
+.header .flex .icons div{
+    margin-left: 1.5rem ;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color:var(--black);
+}
+.header .flex .icons div:hover{
+    color:var(--blue);
+}
+.header .flex .account-box{
+   position: absolute;
+   top:120%; right:2rem;
+   width: 30rem;
+   box-shadow: var(--box-shadow);
+   border-radius: .5rem;
+   padding:2rem;
+   text-align: center;
+   border-radius: .5rem;
+   border:var(--border);
+   background-color: var(--white);
+   display: none;
+   animation:fadeIn .2s linear;
+}
+
+.header .flex .account-box.active{
+   display: inline-block;
+}
+
+.header .flex .account-box p{
+   font-size: 2rem;
+   color:var(--light-color);
+   margin-bottom: 1.5rem;
+}
+
+.header .flex .account-box p span{
+   color:var(--blue);
+}
+
+.header .flex .account-box .delete-btn{
+   margin-top: 0;
+}
+
+.header .flex .account-box div{
+   margin-top: 1.5rem;
+   font-size: 2rem;
+   color:var(--light-color);
+}
+
+.header .flex .account-box div a{
+   color:var(--orange);
+}
+
+.header .flex .account-box div a:hover{
+   text-decoration: underline;
+}
+
+#menu-btn{
+   display: none;
+}
+
+.home {
+   background-color: #f5f5f5;
+   padding: 50px 0; /* Ajusta el espaciado según sea necesario */
+   text-align: center;
+}
+
+.hero {
+   margin-bottom: 50px; /* Ajusta el espaciado entre el héroe y la sección siguiente */
+}
+
+.hero h1 {
+   font-size: 3rem; /* Ajusta el tamaño del título según sea necesario */
+   color: var(--black);
+   margin-bottom: 20px; /* Ajusta el espaciado entre el título y el párrafo */
+}
+
+.hero p {
+   font-size: 1.8rem; /* Ajusta el tamaño del párrafo según sea necesario */
+   color: var(--light-color);
+   margin-bottom: 30px; /* Ajusta el espaciado entre el párrafo y el botón */
+}
+
+.btn {
+   background-color: var(--blue);
+   color: var(--white);
+   padding: 15px 30px; /* Ajusta el tamaño del botón según sea necesario */
+   border-radius: 5px;
+   font-size: 1.8rem;
+   text-transform: uppercase;
+   transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+   background-color: #2c3e50; /* Cambia el color de fondo cuando se pasa el cursor */
+}
+
+
+
+/* Estilos para la sección featured-books */
+.featured-books {
+    padding: 50px 0; /* Ajusta el espaciado según sea necesario */
+    text-align: center;
+    color: var(--blue);
+ }
+ 
+ .featured-books h2 {
+    font-size: 2.5rem; /* Ajusta el tamaño del título según sea necesario */
+    color: var(--blue);
+    margin-bottom: 20px; /* Ajusta el espaciado entre el título y el contenido */
+ }
+ .featured-books h3 {
+    font-size: 2.5rem; /* Ajusta el tamaño del título según sea necesario */
+    color: var(--black);
+    margin-bottom: 20px; /* Ajusta el espaciado entre el título y el contenido */
+ }
+ 
+ 
+.footer {
+   background-color: #333;
+   color: #fff;
+   padding: 30px 0; 
+   text-align: center;
+}
+
+.footer-content {
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap; 
+   margin-bottom: 30px; 
+}
+
+.footer-section {
+   flex: 1;
+}
+
+.footer-section h3 {
+   font-size: 2rem; 
+   color: var(--orange);
+   margin-bottom: 10px; 
+}
+
+.footer-section p {
+   font-size: 1.6rem; /* Ajusta el tamaño del párrafo según sea necesario */
+   margin-bottom: 10px; /* Ajusta el espaciado entre los párrafos */
+}
+
+.footer-bottom {
+   font-size: 1.4rem; /* Ajusta el tamaño del texto según sea necesario */
+}
+ 
+ /* Estilos para las tarjetas de libros */
+ .card {
+    margin-bottom: 20px; /* Espacio entre cada tarjeta */
+    border: 1px solid #ddd; /* Borde de la tarjeta */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: var(--box-shadow);
+    transition: box-shadow 0.3s ease; /* Transición suave en la sombra */
+    width: 30%; /* Establece el ancho de cada carta */
+    display: flex; /* Establece la carta como un flexbox */
+    flex-direction: column; /* Alinea los elementos verticalmente dentro de la carta */
+  }
+ 
+ .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+  }
+ 
+ /* Contenedor de libros destacados */
+ .featured-books-container {
+    display: flex; /* Establece el contenedor como un flexbox */
+    justify-content: space-between; /* Distribuye los elementos de manera uniforme a lo largo del contenedor */
+    gap: 20px; /* Espacio entre cada carta */
+  }
+ 
+ /* Estilos para el contenido dentro de las tarjetas */
+ .book {
+    display: flex; /* Establece el libro como un flexbox */
+    flex-direction: column; /* Alinea los elementos verticalmente dentro del libro */
+    align-items: center; /* Centra horizontalmente los elementos dentro del libro */
+    text-align: center; /* Alinea el texto al centro */
+  }
+ 
+ .book h3 {
+    font-size: 18px; /* Tamaño del título */
+    margin-bottom: 10px; /* Espacio inferior entre el título y la imagen */
+    color: var(--black);
+  }
+ 
+  /* Estilos para las tarjetas de libros */
+
+.book-card {
+    margin-bottom: 20px; /* Espacio entre cada tarjeta */
+    border: 1px solid #ddd; /* Borde de la tarjeta */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: var(--box-shadow);
+    transition: box-shadow 0.3s ease; /* Transición suave en la sombra */
+    width: calc(20% - 40px); /* Reducir el ancho de cada tarjeta */
+
+    display: flex; /* Establece la carta como un flexbox */
+    flex-direction: column; /* Alinea los elementos verticalmente dentro de la carta */
+    margin-right: 20px;
+    flex: 0 0 auto;
+}
+ 
+.book-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+}
+
+/* Establece la dirección del flex container a horizontal */
+.book-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en múltiples líneas */
+    justify-content: space-around; /* Distribuye las tarjetas uniformemente */
+}
+
+
+/* Estilos para el contenido dentro de las cartas */
+
+.book-info {
+    padding: 10px; /* Espaciado interno */
+}
+
+.book-title {
+    font-size: 16px; /* Reducir el tamaño del título */
+    margin-bottom: 10px; /* Espacio inferior entre el título y la imagen */
+    color: var(--black);
+}
+
+.book-author {
+    font-size: 14px; /* Reducir el tamaño del autor */
+    color: var(--light-color);
+    margin-bottom: 5px;
+}
+
+.book-price {
+    font-size: 14px; /* Reducir el tamaño del precio */
+    color: var(--blue);
+    margin-bottom: 10px;
+}
+
+.book-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* Mueve los botones al final de la carta */
+}
+
+.book-buttons button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px; /* Reducir el tamaño del texto del botón */
+    color: var(--black);
+}
+
+.book-buttons button:hover {
+    color: var(--blue);
+}
+
+/* Cambiar el tamaño de las imágenes dentro de las tarjetas */
+.book img {
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height: 100px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor cubriendo el área */
+    border-top-left-radius: 5px; /* Borde redondeado superior izquierdo */
+    border-top-right-radius: 5px; /* Borde redondeado superior derecho */
+}
+
+ 
+ 
+ 
+ @media (max-width:991px){
+ 
+    html{
+       font-size: 55%;
+    }
+
+    /* Ajuste para dispositivos más pequeños */
+    .book-card {
+        width: calc(50% - 40px); /* Reducir el ancho para que quepan dos tarjetas por fila */
+    }
+ 
+ }
+ 
+ @media (max-width:768px){
+ 
+    #menu-btn{
+       display: inline-block;
+    }
+ 
+    .header .header-2 .flex .navbar{
+       position: absolute;
+       top:99%; left:0; right:0;
+       background-color: var(--white);
+       border-top: var(--border);
+       border-bottom: var(--border);
+       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+ 
+    .header .header-2 .flex .navbar.active{
+       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+ 
+    .header .header-2 .flex .navbar a{
+       display: block;
+       font-size: 2.5rem;
+       margin:2rem;
+    }
+ 
+    .home .content h3{
+       font-size: 3.5rem;
+    }
+
+    /* Cambiar la dirección del flex container a vertical */
+    .book-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Ajuste para dispositivos más pequeños */
+    .book-card {
+        width: calc(100% - 40px); /* Establecer el ancho al 100% del contenedor */
+    }
+ 
+ }
+ 
+ @media (max-width:450px){
+ 
+    html{
+       font-size: 50%;
+    }
+ 
+    .heading h3{
+       font-size: 3.5rem;
+    }
+ 
+    .title{
+       font-size: 3rem;
+    }
+ 
+    .book img {
+       height: 150px; /* Reducir la altura de las imágenes en dispositivos muy pequeños */
+    }
+ 
+ }

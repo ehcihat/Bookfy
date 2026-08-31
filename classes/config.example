@@ -1,0 +1,9 @@
+{
+    "conn":{
+        "server": "db",
+        "user": "prueba",
+        "pass": "1234",
+        "db": "bookfy",
+        "port": "3306"
+    }
+}

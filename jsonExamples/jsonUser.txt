@@ -1,0 +1,7 @@
+
+{
+    "nom_usu": "tahicheprueba;",
+    "pass_usu": "12345",
+    "email_usu": "tahicheprueba@gmail.com",
+    "img_usu": "gfgf.png" 
+    }

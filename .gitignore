@@ -1,0 +1,14 @@
+# Configuración con credenciales
+classes/config
+.env
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Docker (datos locales, no el Dockerfile/compose)
+*.log

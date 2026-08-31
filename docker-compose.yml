@@ -1,0 +1,16 @@
+services: 
+  web: 
+    build: .
+    ports: 
+      - "8080:80"
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes: 
+      - ./bd/bookfy.sql:/docker-entrypoint-initdb.d/bookfy.sql
+    ports: 
+      - "3307:3306"
