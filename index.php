@@ -8,7 +8,7 @@
     <script>
        
         window.onload = function() {
-            window.location.href = 'http://localhost/Proyecto/front-end/views/bookfy.php';
+            window.location.href = '/front-end/views/bookfy.php';
         };
     </script>
 </head>
@@ -16,7 +16,7 @@
 <noscript>
 <div class="message-error">
         <h1>Te has equivocado de página</h1>
-        <h1>Intenta ir a Bookfy: <a href="http://localhost/Proyecto/front-end/views/bookfy.php" >inicio</a></h1>
+        <h1>Intenta ir a Bookfy: <a href='/front-end/views/bookfy.php' >inicio</a></h1>
     </div>
     <noscript>
    
