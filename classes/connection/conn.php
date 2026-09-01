@@ -31,13 +31,28 @@ class Conn
     }
 
     /**
-     * Obtiene los datos de conexión desde el archivo de configuración 'config'.
+     * Obtiene los datos de conexión, priorizando variables de entorno
+     * (usadas en producción, ej. Render) y usando el archivo 'config'
+     * como respaldo para desarrollo local.
      *
      * @return array Un array que contiene los datos de conexión.
      */
-
     private function connData()
     {
+        $envHost = getenv('DB_HOST');
+ 
+        if ($envHost !== false) {
+            return [
+                'conn' => [
+                    'server' => $envHost,
+                    'user'   => getenv('DB_USER'),
+                    'pass'   => getenv('DB_PASS'),
+                    'db'     => getenv('DB_NAME'),
+                    'port'   => getenv('DB_PORT'),
+                ]
+            ];
+        }
+ 
         $path = dirname(dirname(__DIR__));
         $json = file_get_contents($path . "/classes/config");
         return json_decode($json, true);
