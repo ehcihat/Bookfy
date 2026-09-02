@@ -1,4 +1,4 @@
-fetch('http://localhost/Proyecto/book?featured')
+fetch('/book?featured')
   .then(response => response.json())
   .then(data => {
     const featuredBooksContainer = document.querySelector('.featured-books-container');

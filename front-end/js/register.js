@@ -49,7 +49,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost/Proyecto/user',
+            url: '/user',
             data: JSON.stringify(formData),
             contentType: 'application/json',
             dataType: 'json',

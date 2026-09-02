@@ -20,7 +20,7 @@ function fetchData(url) {
 }
 
 // Llamada AJAX para obtener editores
-fetchData('http://localhost/Proyecto/publisher')
+fetchData('/publisher')
     .then(function(data) {
         const id_ediSelect = document.getElementById('id_edi');
         data.forEach(publisher => {
@@ -36,7 +36,7 @@ fetchData('http://localhost/Proyecto/publisher')
 
 
 // Llamada AJAX para obtener generos
-fetchData('http://localhost/Proyecto/genre')
+fetchData('/genre')
     .then(function(data) {
         const id_genSelect = document.getElementById('id_gen');
         data.forEach(genre => {
@@ -50,7 +50,7 @@ fetchData('http://localhost/Proyecto/genre')
         console.error('Error fetching genres:', error);
     });
 // Llamada AJAX para obtener tiendas
-fetchData('http://localhost/Proyecto/store')
+fetchData('/store')
     .then(function(data) {
         const cod_tieSelect = document.getElementById('cod_tie');
         data.forEach(store => {
@@ -65,7 +65,7 @@ fetchData('http://localhost/Proyecto/store')
     });
 
 // Llamada AJAX para obtener categorias
-fetchData('http://localhost/Proyecto/category')
+fetchData('/category')
     .then(function(data) {
         const id_catSelect = document.getElementById('id_cat');
         data.forEach(category => {
@@ -80,7 +80,7 @@ fetchData('http://localhost/Proyecto/category')
     });
 
 // Llamada AJAX para obtener autores
-fetchData('http://localhost/Proyecto/author')
+fetchData('/author')
     .then(function(data) {
         const id_autSelect = document.getElementById('id_aut');
         data.forEach(author => {
@@ -185,7 +185,7 @@ fetchData('http://localhost/Proyecto/author')
 
             // Realizar la solicitud AJAX para enviar los datos del libro
             $.ajax({
-                url: 'http://localhost/Proyecto/book',
+                url: '/book',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(bookData)
@@ -204,7 +204,7 @@ fetchData('http://localhost/Proyecto/author')
                 imgFormData.append('img_file', imgFile);
 
                 $.ajax({
-                    url: 'http://localhost/Proyecto/image',
+                    url: '/image',
                     method: 'POST',
                     processData: false,
                     contentType: false,
