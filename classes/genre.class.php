@@ -4,7 +4,7 @@ require_once "response.class.php";
 
 class Genre extends Conn
 {
-    private $table = "genero";
+    private $table = "GENERO";
 
     private $nom_gen = "";
     private $id_gen = "";

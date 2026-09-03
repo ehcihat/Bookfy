@@ -4,7 +4,7 @@ require_once "response.class.php";
 
 class Category extends Conn
 {
-    private $table = "categoria";
+    private $table = "CATEGORIA";
 
     private $nom_cat = "";
     private $id_cat = "";
