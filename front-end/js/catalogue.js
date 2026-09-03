@@ -89,7 +89,7 @@ function createBookCard(book) {
   
   
     // Hacer una solicitud AJAX para obtener los generos disponibles
-    fetch('http://localhost/Proyecto/genre')
+    fetch('/genre')
       .then(response => response.json())
       .then(genres => {
         // Limpiar el select actual
@@ -111,7 +111,7 @@ function createBookCard(book) {
       })
       .catch(error => console.error('Error fetching genres:', error));
   
-      fetch('http://localhost/Proyecto/author')
+      fetch('/author')
       .then(response => response.json())
       .then(authors => {
         // Limpiar el select actual
@@ -133,7 +133,7 @@ function createBookCard(book) {
       })
       .catch(error => console.error('Error fetching authors:', error));
   
-      fetch('http://localhost/Proyecto/category')
+      fetch('/category')
       .then(response => response.json())
       .then(categories => {
         // Limpiar el select actual
@@ -166,7 +166,7 @@ function createBookCard(book) {
             fetchBooks();
         } else {
             // Hacer una nueva solicitud AJAX para obtener los libros ordenados por precio
-            fetch(`http://localhost/Proyecto/book?getBookByPrice=${sortByPriceValue}`)
+            fetch(`/book?getBookByPrice=${sortByPriceValue}`)
                 .then(response => response.json())
                 .then(sortedBooks => {
                     // Limpiar la lista de libros actual
@@ -191,7 +191,7 @@ function createBookCard(book) {
             fetchBooks();
         } else {
             // Hacer una solicitud AJAX para buscar libros por nombre
-            fetch(`http://localhost/Proyecto/book?getBookByName=${searchValue}`)
+            fetch(`/book?getBookByName=${searchValue}`)
                 .then(response => response.json())
                 .then(searchedBooks => {
                     // Limpiar la lista de libros actual
@@ -215,7 +215,7 @@ function createBookCard(book) {
           fetchBooks();
       } else {
           // Hacer una solicitud AJAX para buscar libros por nombre
-          fetch(`http://localhost/Proyecto/book?getBookByISBN=${searchValue}`)
+          fetch(`/book?getBookByISBN=${searchValue}`)
               .then(response => response.json())
               .then(searchedBooks => {
                   // Limpiar la lista de libros actual
@@ -243,7 +243,7 @@ function createBookCard(book) {
           fetchBooks();
       } else {
           // Hacer una nueva solicitud AJAX para obtener los libros ordenados por precio
-          fetch(`http://localhost/Proyecto/book?getBookByGenre=${sortByGenreValue}`)
+          fetch(`/book?getBookByGenre=${sortByGenreValue}`)
               .then(response => response.json())
               .then(sortedBooks => {
                   // Limpiar la lista de libros actual
@@ -267,7 +267,7 @@ function createBookCard(book) {
         fetchBooks();
     } else {
         // Hacer una nueva solicitud AJAX para obtener los libros ordenados por precio
-        fetch(`http://localhost/Proyecto/book?getBookByAuthor=${sortByAuthorValue}`)
+        fetch(`/book?getBookByAuthor=${sortByAuthorValue}`)
             .then(response => response.json())
             .then(sortedBooks => {
                 // Limpiar la lista de libros actual
@@ -291,7 +291,7 @@ function createBookCard(book) {
         fetchBooks();
     } else {
         // Hacer una nueva solicitud AJAX para obtener los libros ordenados por precio
-        fetch(`http://localhost/Proyecto/book?getBookByCategory=${sortByCategoryValue}`)
+        fetch(`/book?getBookByCategory=${sortByCategoryValue}`)
             .then(response => response.json())
             .then(sortedBooks => {
                 // Limpiar la lista de libros actual
@@ -310,7 +310,7 @@ function createBookCard(book) {
   
     // Función para cargar todos los libros
     function fetchBooks() {
-        fetch('http://localhost/Proyecto/book?author')
+        fetch('/book?author')
             .then(response => response.json())
             .then(data => {
                 // Limpiar la lista de libros actual
@@ -337,7 +337,7 @@ function createBookCard(book) {
     // Verificar si el usuario confirmo la eliminación
   
         // Realizar una solicitud DELETE al servidor para eliminar el libro
-        fetch(`http://localhost/Proyecto/book?id=${bookId}`, {
+        fetch(`/book?id=${bookId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

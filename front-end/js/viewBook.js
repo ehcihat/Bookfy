@@ -12,7 +12,7 @@ function loadBookData(bookId) {
         timeout: 50 
     };
 
-    fetch(`http://localhost/Proyecto/book?id=${bookId}`, fetchOptions)
+    fetch(`/book?id=${bookId}`, fetchOptions)
         .then(response => response.json())
         .then(data => {
             const bookData = data[0];
@@ -39,14 +39,14 @@ $(document).ready(function() {
     const bookId = getBookIdFromUrl();
     loadBookData(bookId);
 
-    fetch(`http://localhost/Proyecto/book?id=${bookId}`)
+    fetch(`/book?id=${bookId}`)
         .then(response => response.json())
         .then(data => {
             const bookData = data[0];
             Promise.all([
-                fetch(`http://localhost/Proyecto/publisher?id=${bookData.id_edi}`).then(response => response.json()),
-                fetch(`http://localhost/Proyecto/genre?id=${bookData.id_gen}`).then(response => response.json()),
-                fetch(`http://localhost/Proyecto/store?id=${bookData.cod_tie}`).then(response => response.json())
+                fetch(`/publisher?id=${bookData.id_edi}`).then(response => response.json()),
+                fetch(`/genre?id=${bookData.id_gen}`).then(response => response.json()),
+                fetch(`/store?id=${bookData.cod_tie}`).then(response => response.json())
             ])
             .then(([publisherData, genreData, storeData]) => {
                 const publisherName = publisherData[0].nom_edi;

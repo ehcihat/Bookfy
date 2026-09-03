@@ -6,7 +6,7 @@ require_once "response.class.php";
 //Clase libro que extiende de nuestra otra clase Conn en la que realizamos funciones para el trato de consultas SQL.
 class Book extends Conn
 {
-    private $table = "libro";
+    private $table = "LIBRO";
     private $id_lib = "";
     private $tit_lib = "";
     private $num_pag = "";
@@ -48,15 +48,15 @@ class Book extends Conn
         GROUP_CONCAT(DISTINCT categoria.id_cat) AS id_categorias,
         GROUP_CONCAT(DISTINCT categoria.nom_cat) AS categorias
     FROM 
-        $this->table
+        $this->table AS libro
     LEFT JOIN 
         AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
     LEFT JOIN 
-        autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+        AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
     LEFT JOIN 
         CATEGORIA_LIBROS ON libro.id_lib = CATEGORIA_LIBROS.id_lib
     LEFT JOIN 
-        categoria ON CATEGORIA_LIBROS.id_cat = categoria.id_cat
+        CATEGORIA AS categoria ON CATEGORIA_LIBROS.id_cat = categoria.id_cat
     WHERE 
         libro.id_lib = $id
     GROUP BY 
@@ -319,10 +319,10 @@ class Book extends Conn
     private function deleteBookQuery()
     {
 
-        $deleteAuthorsQuery = "DELETE FROM autor_libro WHERE id_lib = '" . $this->id_lib . "'";
+        $deleteAuthorsQuery = "DELETE FROM AUTOR_LIBRO WHERE id_lib = '" . $this->id_lib . "'";
         parent::execQuery($deleteAuthorsQuery);
 
-        $deleteCategoriesQuery = "DELETE FROM categoria_libros WHERE id_lib = '" . $this->id_lib . "'";
+        $deleteCategoriesQuery = "DELETE FROM CATEGORIA_LIBROS WHERE id_lib = '" . $this->id_lib . "'";
         parent::execQuery($deleteCategoriesQuery);
 
         $query = "DELETE FROM " . $this->table . " WHERE id_lib= '" . $this->id_lib . "'";
@@ -344,10 +344,10 @@ class Book extends Conn
     public function getFeaturedBooks()
     {
         $query = "SELECT DISTINCT libro.id_lib, libro.tit_lib, libro.img_lib, autor.nom_aut
-        FROM " . $this->table . "
-        INNER JOIN review ON " . $this->table . ".id_lib = review.id_lib
-        INNER JOIN AUTOR_LIBRO ON " . $this->table . ".id_lib = AUTOR_LIBRO.id_lib
-        INNER JOIN autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+        FROM " . $this->table . " AS libro
+        INNER JOIN REVIEW AS review ON libro.id_lib = review.id_lib
+        INNER JOIN AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
+        INNER JOIN AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
         WHERE review.rate = 5";
 
         $data = parent::getData($query);
@@ -363,9 +363,9 @@ class Book extends Conn
     public function getBookAuthor()
     {
         $query = "SELECT libro.id_lib, libro.tit_lib, libro.precio, libro.img_lib, GROUP_CONCAT(autor.nom_aut SEPARATOR ', ') AS autores
-        FROM " . $this->table . "
-        INNER JOIN AUTOR_LIBRO ON " . $this->table . ".id_lib = AUTOR_LIBRO.id_lib
-        INNER JOIN autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+        FROM " . $this->table . " AS libro
+        INNER JOIN AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
+        INNER JOIN AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
         GROUP BY libro.id_lib";
 
 
@@ -465,12 +465,12 @@ class Book extends Conn
     private function updateAuthorsOfBook($authorIds)
     {
         //Eliminar todas las asociaciones de autores para este libro.
-        $deleteQuery = "DELETE FROM autor_libro WHERE id_lib = '" . $this->id_lib . "'";
+        $deleteQuery = "DELETE FROM AUTOR_LIBRO WHERE id_lib = '" . $this->id_lib . "'";
         parent::updateQuery($deleteQuery);
 
         //Insertar las nuevas asociaciones de autores.
         foreach ($authorIds as $authorId) {
-            $insertQuery = "INSERT INTO autor_libro (id_aut, id_lib) VALUES ('$authorId', '" . $this->id_lib . "')";
+            $insertQuery = "INSERT INTO AUTOR_LIBRO (id_aut, id_lib) VALUES ('$authorId', '" . $this->id_lib . "')";
             parent::updateQuery($insertQuery);
         }
     }
@@ -482,12 +482,12 @@ class Book extends Conn
     private function updateCategoriesOfBook($categoryIds)
     {
         //Eliminar todas las asociaciones de categorías para este libro.
-        $deleteQuery = "DELETE FROM categoria_libros WHERE id_lib = '" . $this->id_lib . "'";
+        $deleteQuery = "DELETE FROM CATEGORIA_LIBROS WHERE id_lib = '" . $this->id_lib . "'";
         parent::updateQuery($deleteQuery);
 
         //Insertar las nuevas asociaciones de categorías.
         foreach ($categoryIds as $categoryId) {
-            $insertQuery = "INSERT INTO categoria_libros (id_cat, id_lib) VALUES ('$categoryId', '" . $this->id_lib . "')";
+            $insertQuery = "INSERT INTO CATEGORIA_LIBROS (id_cat, id_lib) VALUES ('$categoryId', '" . $this->id_lib . "')";
             parent::updateQuery($insertQuery);
         }
     }
@@ -503,9 +503,9 @@ class Book extends Conn
     public function getBookByPrice($value)
     {
         $query = "SELECT libro.id_lib, libro.tit_lib, libro.precio, libro.img_lib, GROUP_CONCAT(autor.nom_aut) AS autores
-              FROM " . $this->table . "
-              INNER JOIN AUTOR_LIBRO ON " . $this->table . ".id_lib = AUTOR_LIBRO.id_lib
-              INNER JOIN autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+              FROM " . $this->table . " AS libro
+              INNER JOIN AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
+              INNER JOIN AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
               GROUP BY libro.id_lib
               ORDER BY libro.precio $value";
         return parent::getData($query);
@@ -520,9 +520,9 @@ class Book extends Conn
     public function getBookByName($name)
     {
         $query = "SELECT libro.id_lib, libro.tit_lib, libro.precio, libro.img_lib, GROUP_CONCAT(autor.nom_aut) AS autores
-              FROM " . $this->table . "
-              INNER JOIN AUTOR_LIBRO ON " . $this->table . ".id_lib = AUTOR_LIBRO.id_lib
-              INNER JOIN autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+              FROM " . $this->table . " AS libro
+              INNER JOIN AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
+              INNER JOIN AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
               WHERE libro.tit_lib LIKE '%" . $name . "%'
               GROUP BY libro.id_lib";
         return parent::getData($query);
@@ -537,9 +537,9 @@ class Book extends Conn
     public function getBookByGenre($id_gen)
     {
         $query = "SELECT libro.id_lib, libro.tit_lib, libro.precio, libro.img_lib, GROUP_CONCAT(autor.nom_aut) AS autores
-              FROM " . $this->table . "
-              INNER JOIN AUTOR_LIBRO ON " . $this->table . ".id_lib = AUTOR_LIBRO.id_lib
-              INNER JOIN autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+              FROM " . $this->table . " AS libro
+              INNER JOIN AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
+              INNER JOIN AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
               WHERE libro.id_gen =  $id_gen
               GROUP BY libro.id_lib";
         return parent::getData($query);
@@ -553,9 +553,9 @@ class Book extends Conn
     public function getBookByISBN($isbn)
     {
         $query = "SELECT libro.id_lib, libro.tit_lib, libro.precio, libro.img_lib, GROUP_CONCAT(autor.nom_aut) AS autores
-              FROM " . $this->table . "
-              INNER JOIN AUTOR_LIBRO ON " . $this->table . ".id_lib = AUTOR_LIBRO.id_lib
-              INNER JOIN autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+              FROM " . $this->table . " AS libro
+              INNER JOIN AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
+              INNER JOIN AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
               WHERE libro.isbn LIKE '%" . $isbn . "%'
               GROUP BY libro.id_lib";
         return parent::getData($query);
@@ -571,9 +571,9 @@ class Book extends Conn
     public function getBookByAuthor($id_aut)
     {
         $query = "SELECT libro.id_lib, libro.tit_lib, libro.precio, libro.img_lib, GROUP_CONCAT(autor.nom_aut) AS autores
-              FROM " . $this->table . "
-              INNER JOIN AUTOR_LIBRO ON " . $this->table . ".id_lib = AUTOR_LIBRO.id_lib
-              INNER JOIN autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+              FROM " . $this->table . " AS libro
+              INNER JOIN AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
+              INNER JOIN AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
               WHERE autor.id_aut = $id_aut
               GROUP BY libro.id_lib";
         return parent::getData($query);
@@ -588,10 +588,10 @@ class Book extends Conn
     public function getBookByCategory($id_cat)
     {
         $query = "SELECT libro.id_lib, libro.tit_lib, libro.precio, libro.img_lib, GROUP_CONCAT(autor.nom_aut) AS autores
-              FROM " . $this->table . "
-              INNER JOIN AUTOR_LIBRO ON " . $this->table . ".id_lib = AUTOR_LIBRO.id_lib
-              INNER JOIN autor ON AUTOR_LIBRO.id_aut = autor.id_aut
-              INNER JOIN categoria_libros ON " . $this->table . ".id_lib = categoria_libros.id_lib
+              FROM " . $this->table . " AS libro
+              INNER JOIN AUTOR_LIBRO ON libro.id_lib = AUTOR_LIBRO.id_lib
+              INNER JOIN AUTOR AS autor ON AUTOR_LIBRO.id_aut = autor.id_aut
+              INNER JOIN CATEGORIA_LIBROS AS categoria_libros ON libro.id_lib = categoria_libros.id_lib
               WHERE categoria_libros.id_cat = " . $id_cat . "
               GROUP BY libro.id_lib";
         return parent::getData($query);

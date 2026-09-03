@@ -23,7 +23,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost/Proyecto/auth',
+            url: '/auth',
             data: JSON.stringify(formData),
             contentType: 'application/json',
             dataType: 'json',

@@ -26,7 +26,7 @@ $(document).ready(function() {
     // Hacer la petición AJAX para verificar el token en el backend
     $.ajax({
         type: 'GET',
-        url: 'http://localhost/Proyecto/auth?token=' + token,
+        url: '/auth?token=' + token,
         contentType: 'application/json',
         dataType: 'json',
         success: function (data) {

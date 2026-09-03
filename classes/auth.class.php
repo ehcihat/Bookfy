@@ -96,7 +96,7 @@ class Auth extends Conn
      */
     private function getDataUser($email_usu)
     {
-        $query = "SELECT nom_usu,id_usu,pass_usu FROM usuario WHERE email_usu ='$email_usu'";
+        $query = "SELECT nom_usu,id_usu,pass_usu FROM USUARIO WHERE email_usu ='$email_usu'";
         $data = parent::getData($query);
 
         if (isset($data[0]["id_usu"])) {

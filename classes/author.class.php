@@ -4,7 +4,7 @@ require_once "response.class.php";
 
 class Author extends Conn
 {
-    private $table = "autor";
+    private $table = "AUTOR";
 
     private $nom_aut = "";
     private $id_aut = "";

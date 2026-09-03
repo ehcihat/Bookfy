@@ -8,6 +8,7 @@ class Conn
     private $pass;
     private $db;
     private $port;
+    protected $conn;
 
     /**
      * Constructor de la clase. Establece la conexión con la base de datos.

@@ -4,7 +4,7 @@ require_once "response.class.php";
 
 class Publisher extends Conn
 {
-    private $table = "editorial";
+    private $table = "EDITORIAL";
 
     private $id_edi = "";
     private $nom_edi = "";

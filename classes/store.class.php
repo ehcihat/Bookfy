@@ -4,7 +4,7 @@ require_once "response.class.php";
 
 class Store extends Conn
 {
-    private $table = "tienda";
+    private $table = "TIENDA";
 
     private $nom_tie = "";
     private $cod_tie = "";
